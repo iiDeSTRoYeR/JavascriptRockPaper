@@ -50,8 +50,8 @@ function game() {
     playerScore = 0;
     computerScore = 0;
     roundCounter = 1;
+    prevoiusRound = 1;
     for (let i = 0; i < 5; i++) {
-        prevoiusRound = 1;
         userInput = prompt('Enter your choice of Rock, Paper, Scissors!');
         console.log(playRound(userInput, computerPlay()));
         while (prevoiusRound == roundCounter){
@@ -59,7 +59,7 @@ function game() {
             console.log(playRound(userInput, computerPlay()));
         }
         prevoiusRound++;
-        console.log(`Current Score: Player ${playerScore} vs. Computer ${computerScore}`);
+        console.log(`Round: ${prevoiusRound-1} \nCurrent Score: Player ${playerScore} vs. Computer ${computerScore}`);
     }
     alert(`Final Score\n Player: ${playerScore} \n Computer: ${computerScore}`);
 }
