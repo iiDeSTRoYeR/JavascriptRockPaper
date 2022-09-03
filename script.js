@@ -29,24 +29,36 @@ function playRound(playerSelection, computerSelection) {
 
     if (listOfTruth.includes(true)) {
         playerScore += 1;
+        roundCounter += 1;
         return `You Win! ${playerSelection} beats ${computerSelection}.`
     } else if (playerSelection == computerSelection) {
+        roundCounter += 1;
         return 'Tie!'
     } else {
         computerScore += 1;
+        roundCounter += 1;
         return `You Lose! ${computerSelection} beats ${playerSelection}.`
     }
 }
 
 let playerScore;
 let computerScore;
+let roundCounter;
+let prevoiusRound;
 
 function game() {
     playerScore = 0;
     computerScore = 0;
+    roundCounter = 1;
     for (let i = 0; i < 5; i++) {
-        userInput = prompt('Enter your choice of Rock, Paper, Scissors!')
+        prevoiusRound = 1;
+        userInput = prompt('Enter your choice of Rock, Paper, Scissors!');
         console.log(playRound(userInput, computerPlay()));
+        while (prevoiusRound == roundCounter){
+            userInput = prompt('Enter your choice of Rock, Paper, Scissors!');
+            console.log(playRound(userInput, computerPlay()));
+        }
+        prevoiusRound++;
         console.log(`Current Score: Player ${playerScore} vs. Computer ${computerScore}`);
     }
     alert(`Final Score\n Player: ${playerScore} \n Computer: ${computerScore}`);
